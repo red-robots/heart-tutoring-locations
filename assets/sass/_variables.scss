@@ -1,0 +1,133 @@
+$color__background-body: #ECF8F8;
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-button: #e6e6e6;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+
+$color__text-screen: #21759b;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__link: #8961AF;
+$purple: #8961AF;
+$color__link-visited: #8961AF;
+$color__link-hover: #C1D42F;
+$color__text-main: #404040;
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #ccc;
+$color__border-abbr: #666;
+
+$primary: #8A5EB1;
+$secondary: #00A5D1;
+$teal: #00A5D1;
+
+$font_primary: 'EurostileLTPro',sans-serif;
+$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", Courier, monospace;
+$font__line-height-body: 1.5;
+$font__line-height-pre: 1.6;
+
+$xswidth: 480px;
+$tabwidth: 600px;
+$midwidth: 960px;
+$deskwidth: 1300px;
+$wrapwidth: 1100px;
+
+@mixin xs { @media (min-width: $xswidth) { @content; } }
+@mixin tab { @media (min-width: $tabwidth) { @content; } }
+@mixin mid { @media (min-width: $midwidth) { @content; } }
+@mixin desk {  @media (min-width: $deskwidth) { @content; } }
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+	clear: both;
+	*zoom: 1;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+@mixin flexbox(){
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+  }
+  @mixin flexbox-flex($first, $second, $third) {
+	-webkit-box-flex: $first $second $third;
+	-moz-box-flex: $first $second $third;
+	-webkit-flex: $first $second $third;
+	-ms-flex: $first $second $third;
+	flex: $first $second $third;
+  }
+  @mixin flexbox-wrap($value){
+	-webkit-flex-wrap: $value;
+	flex-wrap: $value;
+  }
+  @mixin flexbox-align-content($value){
+	-webkit-align-content: $value;
+	align-content: $value;
+  }
+  @mixin flexbox-align-items($value){
+	-webkit-align-items: $value;
+	align-items: $value;
+  }
+  @mixin flexbox-justify($value){
+	-webkit-justify-content: $value;
+	justify-content: $value;
+  }
+  @mixin flexbox-align-self($value){
+	-webkit-align-self: $value;
+	align-self: $value;
+  }
+  @mixin flexbox-direction($value){
+	-webkit-flex-direction: $value;
+	flex-direction: $value;
+  }
+  @mixin translatexy($value1,$value2){
+	-ms-transform: translateX($value1) translateY($value2);
+	-moz-transform: translateX($value1) translateY($value2);
+	-webkit-transform: translateX($value1) translateY($value2);
+	transform: translateX($value1) translateY($value2);
+  }
+
+@mixin flexgroup() {
+	@include flexbox();
+	@include flexbox-wrap(wrap);
+	@include flexbox-direction(row);
+}
+
+@mixin flexgroup-center() {
+	@include flexbox();
+	@include flexbox-wrap(wrap);
+	@include flexbox-direction(row);
+	@include flexbox-align-items(center);
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
