@@ -17,14 +17,7 @@ $form_script = get_field('form_script');
 // print_r($city);
 // echo '</pre>';
 ?>
-<div id="body-line"></div>
-
-<div class="vol-header" style="background-image:url(<?php echo $image; ?>);">
-	<div class="wrap plain-header">
-		<h1><?php the_title(); ?></h1>
-	</div>
-	<div class="overlay"></div>
-</div><!-- top content -->
+<?php include(locate_template('inc/city-headers.php')); ?>
 
 	<div id="main-wrapper">
 		<div id="main">
@@ -66,6 +59,7 @@ $form_script = get_field('form_script');
 					<div class="wrap">
 						<?php echo $form_pre_text; ?>
 						<br>
+						<?php get_template_part('inc/salesforce'); ?>
 						<?php echo $form_script; ?>
 					</div>
 				</section>

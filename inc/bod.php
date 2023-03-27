@@ -8,10 +8,16 @@ $i=0;
 	'orderby'   => 'menu_order',
   	'order'     => 'ASC',
   	'tax_query' => array(
+  		'relation' => 'AND',
 		array(
 			'taxonomy' => 'team-type',
 			'field'    => 'slug',
 			'terms'    => 'board-of-directors',
+		),
+		array(
+			'taxonomy' => 'location',
+			'field'    => 'slug',
+			'terms'    => $city,
 		),
 	),
 

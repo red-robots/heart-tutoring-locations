@@ -35,9 +35,9 @@ $steps_title = get_field( 'steps_title' );
 </section>
 <?php $i=0; if( have_rows('steps') ) : ?>
  <section class="steps">
- 	<h2 class="steps-title">Steps to Volunteer</h2>
+ 	<?php  if($steps_title) { echo '<h2 class="steps-title">'.$steps_title.'</h2>';} ?>
  	<div class="inner">
-   <?php  if($steps_title) { echo '<h2>'.$steps_title.'</h2>';} ?>
+   
    <?php while( have_rows('steps') ): the_row(); $i++; 
       $title = get_sub_field('title');
       $description = get_sub_field('description');

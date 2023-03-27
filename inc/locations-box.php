@@ -22,4 +22,17 @@
 	        <?php endwhile; ?>
 	    <?php endif; ?>
 	</div>
+
+	<?php 
+	$sideGallery = get_field('sidebar_photos'); 
+	
+	if( $sideGallery ) {
+	?>
+		<div class="sidebar-gallery">
+			<?php foreach( $sideGallery as $p ) { ?>
+				<img src="<?php echo $p['url']; ?>">
+			<?php } ?>
+		</div>
+	<?php } ?>
+
 </div>

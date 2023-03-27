@@ -15,14 +15,8 @@ $image = get_the_post_thumbnail_url($ID);
 $city = get_field('location', $pID );
 $cityTerm = $city->slug;
 ?>
-<div id="body-line"></div>
 
-<div class="vol-header" style="background-image:url(<?php echo $image; ?>);">
-	<div class="wrap plain-header">
-		<h1><?php the_title(); ?></h1>
-	</div>
-	<div class="overlay"></div>
-</div><!-- top content -->
+<?php include(locate_template('inc/city-headers.php')); ?>
 
 <div id="main-wrapper">
 	<div id="main">
@@ -76,7 +70,7 @@ $cityTerm = $city->slug;
 							// $image = get_field('image');
 							// $image = get_field('image');
 
-							if( $i == 4 ) {
+							if( $i == 3 ) {
 								$class = 'last';
 								$i = 0;
 							} else {
@@ -108,7 +102,7 @@ $cityTerm = $city->slug;
 							</div>
 						</section>
 					<?php endif; ?>
-					<?php //include(locate_template('inc/bod.php')); ?>
+					<?php include(locate_template('inc/bod.php')); ?>
 				</div>
 				<?php include(locate_template('inc/locations-box.php')); ?>
 		   	</section>

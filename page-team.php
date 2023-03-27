@@ -43,16 +43,10 @@ get_header();
 				'orderby'   => 'menu_order',
               	'order'     => 'ASC',
     	        'tax_query' => array(
-              		'relation' => 'AND',
 					array(
 						'taxonomy' => 'team-type',
 						'field'    => 'slug',
 						'terms'    => 'staff',
-					),
-					array(
-						'taxonomy' => 'location',
-						'field'    => 'slug',
-						'terms'    => $loc,
 					),
 				),
 

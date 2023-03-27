@@ -1423,7 +1423,7 @@ section.locpage .locpage-right{width:100%}
 section.team{width:100%}
 section.team .team-left{width:100%}
 section.team .team-right{width:100%}
-.locations-box{width:100%;float:left;background-color:#8961af;padding:20px;color:#fff;text-align:center}
+.locations-box{width:100%;float:left;background-color:#8961af;padding:20px;color:#fff;text-align:center;border-radius:0 30px 0 30px}
 .locations-box a{color:#fff;text-decoration:none;padding:10px;margin:5px;display:block;-webkit-transition:all ease .2s;transition:all ease .2s;-webkit-transform:scale(1);transform:scale(1)}
 .locations-box a:hover{-webkit-transform:scale(1.1);transform:scale(1.1)}
 .locations-box ul{margin:0;padding:0}
@@ -1481,6 +1481,10 @@ section.city-team .team-member .photo .plus{width:100%;position:absolute;top:50%
 section.city-team .info{width:90%;float:left;position:relative;background-color:#8961af;color:#fff;overflow:hidden;padding:10px 5% 0 5%;-webkit-transition:all ease .3s;transition:all ease .3s;background-image:url("images/team-info.png");background-repeat:no-repeat;background-position:bottom -20px right -40px}
 section.city-team h2{font-size:18px;margin:0 0 8px 0;color:#fff}
 section.city-team h3{font-size:13px;margin:0 0 5px 0;color:#fff}
+.sidebar-gallery{width:100%;margin-top:30px;float:left}
+.sidebar-gallery img{max-width:100%;margin-bottom:20px}
+a.button{color:#fff;background-color:#00a5d1;text-decoration:none;padding:10px;-webkit-transition:all ease .2s;transition:all ease .2s;-webkit-transform:scale(1);transform:scale(1);margin:10px 0;display:inline-block}
+a.button:hover{-webkit-transform:scale(1.05);transform:scale(1.05)}
 @media only screen and (min-device-width:700px) and (max-device-width:800px){#home-row1{width:1100px;height:477px;float:left;border-top:6px solid #00a5d1;background-image:url("images/homerow1.jpg");background-repeat:no-repeat;background-size:cover}
 #volunteer-button{width:105px;height:107px;padding-top:20px;position:fixed;top:400px;left:0;background-color:#8a5eb1;border-radius:0 10px 10px 0;z-index:11111;font-size:16px;color:#fff;font-family:"EurostileLTPro",sans-serif;text-align:center;background-image:url("images/bg-volunteer.png");background-repeat:no-repeat;background-position:bottom center}
 #home-row2{width:1100px;height:410px;float:left;background-image:url("images/bg-home-row2.png");background-repeat:no-repeat;background-position:right}

@@ -19,14 +19,7 @@ $the_content = get_the_content();
 // print_r($location);
 // echo '</pre>';
 ?>
-<div id="body-line"></div>
-
-<div class="vol-header" style="background-image:url(<?php echo $image; ?>);">
-	<div class="wrap plain-header">
-		<h1><?php the_title(); ?></h1>
-	</div>
-	<div class="overlay"></div>
-</div><!-- top content -->
+<?php include(locate_template('inc/city-headers.php')); ?>
 
 	<div id="main-wrapper">
 		<div id="main">

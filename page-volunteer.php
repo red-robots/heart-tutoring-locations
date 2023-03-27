@@ -62,9 +62,9 @@ get_header(); ?>
           <h3><?php the_field("quote_text"); ?></h3>
           <?php the_field("quote_attribute"); ?>
         </div><!-- featured text -->
-        <div id="sidebar-video">
+       <!-- <div id="sidebar-video">
           <?php the_field("video"); ?>
-        </div><!-- sidebar video -->
+        </div> sidebar video -->
       </div> <!-- featured image --> 
 
     <?php the_content(); ?>
@@ -100,29 +100,7 @@ get_header(); ?>
 
   <?php endwhile; endif; ?> 
   <!-- -->
-  <?php
-
-  	$wp_query = new WP_Query();
-    $wp_query->query(array(
-      'post_type'=>'schools',
-      'posts_per_page' => -1,
-    ));
-    if ($wp_query->have_posts()) : ?>
-      <div class="acf-map">
-        <?php while ($wp_query->have_posts()) : $wp_query->the_post(); 
-          $location = get_field('google_map')
-        ?>
-          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
-            <h4><?php the_title(); ?></h4>
-            <p class="address"><?php echo $location['address']; ?></p>
-            <p>Tutoring Times: <?php the_field('tutoring_times'); ?></p>
-            <?php if (strlen(get_post_meta($post->ID, "volunteers_needed", true)) > 0) : ?>
-              <p>Number of Volunteers Needed: <?php the_field('volunteers_needed'); ?></p>
-            <?php endif; ?>
-          </div><!-- marker -->
-        <?php endwhile; ?>
-      </div><!-- map -->
-    <?php endif; ?>
+  <?php //include( locate_template('inc/vol-map.php') ); ?>
   <!-- -->  
   <?php 
   $recent = new WP_Query("page_id=70"); 
@@ -133,7 +111,7 @@ get_header(); ?>
       <?php the_field("content_area"); ?>
       <?php //get_template_part('inc/form-volunteer-new'); ?>
       <!-- using salesforce -->
-      <?php get_template_part('inc/salesforce'); ?>
+      <?php //get_template_part('inc/salesforce'); ?>
       <a name="recruit"></a>
       <br><br><br><br><br>
       <?php the_field('after_form'); ?>
