@@ -1,6 +1,6 @@
 <div id="body-line"></div>
 
-<div class="vol-header" style="background-image:url(<?php echo $image; ?>);">
+<div class="city-header" style="background-image:url(<?php echo $image; ?>);">
 	<div class="wrap plain-header">
 		<h1>
 			<?php 

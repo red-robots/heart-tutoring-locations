@@ -26,8 +26,19 @@ $steps_title = get_field( 'steps_title' );
 		 <div class="content">
 		   <?php echo $content ?>
 		   <?php if( $cta_button ) { ?>
-		    <div class="cta-btn">
-		      <a href="<?php echo $cta_button['link'] ?>"><?php echo $cta_button['title'] ?></a>
+		    <div class="btn-drop">
+		    	<span><?php echo $cta_button['title'] ?>&nbsp;&nbsp;&nbsp;<i class="fa-sharp fa-solid fa-chevron-down"></i></span>
+		      <div class="btn-dropbox">
+		        <?php while( have_rows('dropdown_links') ): the_row(); 
+		            $link = get_sub_field('link');
+		          ?>
+		          
+		            <div class="link">
+		              <a href="<?php echo $link['url']; ?>"><?php echo $link['title']; ?></a>
+		            </div>
+		          
+		        <?php endwhile; ?>
+		        </div>
 		    </div>
 		   <?php } ?>
 		</div>

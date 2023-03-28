@@ -23,6 +23,10 @@ jQuery(document).ready(function ($) {
     $('.dropbox').toggleClass('active');
     $('.vol-drop span i').toggleClass('active');
   });
+  $('.btn-drop').on('click', 'span', function () {
+    $('.btn-dropbox').toggleClass('active');
+    $('.btn-drop span i').toggleClass('active');
+  });
   /*
   *
   *	Equal Heights Divs

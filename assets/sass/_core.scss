@@ -5733,10 +5733,25 @@ section.steps {
     background-color: $teal;
 }
 .vol-header {
+    
+    @include tab() {
+        height: 650px;
+    }
+    .wrap {
+        height: 100%;
+    }
+}
+.city-header {
+    
+    @include tab() {
+        height: 350px;
+    }
+}
+.vol-header, .city-header {
     width: 100%;
     position: relative;
     // padding: 100px 0;
-    height: 350px;
+    
     background-color: $purple;
     text-align: center;
     background-size: cover;
@@ -5787,6 +5802,7 @@ section.steps {
         background-color: rgba($teal, 1);
         cursor: pointer;
         color: #fff;
+        font-size: 36px;
         // border: 1px solid #fff;
     }
     i {
@@ -5822,6 +5838,64 @@ section.steps {
                 color: #fff;
                 background-color: rgba($teal, .7);
                 padding: 15px 0;
+                &:hover {
+                    background-color: rgba($teal, 1);
+                }
+            }
+        }
+    }
+}
+.btn-drop {
+    overflow: hidden;
+    margin: 20px auto;
+    width: auto;
+    position: relative;
+
+    span {
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 10px 20px;
+        background-color: #fff;
+        color: $teal;
+        transition: all ease .2s;
+        border: 1px solid $teal;
+        position: relative;
+        display: inline-block;
+        // border: 1px solid #fff;
+    }
+    i {
+        &.active {
+            transform: translateY(-0%) rotate(180deg);
+          }
+    }
+    // &:hover {
+    //     background-color: rgba($purple, 1);
+    // }
+    .btn-dropbox {
+        list-style-type: none;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-100%);
+        transition: all 0.3s ease-in-out;
+        &.active {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0%);
+        }
+        // &.open {
+        //     height: auto;
+        // }
+        .link {
+            width: 100%;
+            a {
+                display: block;
+                text-decoration: none;
+                color: #fff;
+                background-color: rgba($teal, .7);
+                padding: 15px 10px;
                 &:hover {
                     background-color: rgba($teal, 1);
                 }
