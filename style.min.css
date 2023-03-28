@@ -1466,7 +1466,7 @@ section.steps .step .num{width:50px;height:50px;border-radius:50%;background-col
 .vol-drop .dropbox .link a{display:block;text-decoration:none;color:#fff;background-color:rgba(0,165,209,0.7);padding:15px 0}
 .vol-drop .dropbox .link a:hover{background-color:#00a5d1}
 .btn-drop{overflow:hidden;margin:20px auto;width:auto;position:relative}
-.btn-drop span{text-decoration:none;text-transform:uppercase;padding:10px 20px;background-color:#fff;color:#00a5d1;-webkit-transition:all ease .2s;transition:all ease .2s;border:1px solid #00a5d1;position:relative;display:inline-block}
+.btn-drop span{text-decoration:none;text-transform:uppercase;padding:10px 20px;background-color:#fff;color:#00a5d1;-webkit-transition:all ease .2s;transition:all ease .2s;border:1px solid #00a5d1;position:relative;display:inline-block;cursor:pointer}
 .btn-drop i.active{-webkit-transform:translateY(0) rotate(180deg);transform:translateY(0) rotate(180deg)}
 .btn-drop .btn-dropbox{list-style-type:none;overflow:hidden;padding:0;margin:0;opacity:0;visibility:hidden;-webkit-transform:translateY(-100%);transform:translateY(-100%);-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out}
 .btn-drop .btn-dropbox.active{opacity:1;visibility:visible;-webkit-transform:translateY(0);transform:translateY(0)}
