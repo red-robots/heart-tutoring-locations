@@ -1,7 +1,7 @@
 <?php 
 // Enqueueing all the java script in a no conflict mode
 function bellaworks_scripts() {
-  wp_enqueue_style( 'bellaworks-style', get_template_directory_uri() . '/style.css', array(), '2.12' );
+  wp_enqueue_style( 'bellaworks-style', get_template_directory_uri() . '/style.css', array(), '2.13' );
   //wp_enqueue_style( 'bellaworks-style', get_stylesheet_uri()  );
 
   wp_deregister_script('jquery');
@@ -24,7 +24,7 @@ function bellaworks_scripts() {
   wp_enqueue_script( 
       'acstarter-custom', 
       get_template_directory_uri() . '/assets/js/custom.js', 
-      array(), '1.3', 
+      array(), '1.31', 
       true 
     );
 }

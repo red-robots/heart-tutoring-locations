@@ -941,7 +941,7 @@ hr {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-end;
         padding: 60px 0 40px 0;
     }
     
@@ -2827,6 +2827,11 @@ ol.pings h3 {
 }
 #access li:last-child:hover {
     color: #DFDFDF!important;
+}
+#access li:last-child a {
+    @include tab() {
+        padding-right: 0;
+    }
 }
 // #menu-item-27 {
 //     width: 135px;

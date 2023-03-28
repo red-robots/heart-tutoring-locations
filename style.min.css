@@ -1518,7 +1518,7 @@ section.single-team .bio{width:70%}
 .checkboxes .item{-ms-flex-preferred-size:50%;flex-basis:50%}
 section.city-team .team-member{width:31%}
 section.city-team .team-member.first{margin:0 1.5% 20px 0}
-}@media(min-width:600px){#main-header{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:60px 0 40px 0}
+}@media(min-width:600px){#main-header{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end;padding:60px 0 40px 0}
 #home-row1-links{width:60%}
 #instagram-wrapper{width:62%}
 #latest-news-feed{width:32%}
@@ -1528,6 +1528,7 @@ section.city-team .team-member.first{margin:0 1.5% 20px 0}
 #theory-graphic-left{width:48%}
 .single-post-container{width:60%}
 #news-box{display:block;width:40%;float:right;margin-top:-25px}
+#access li:last-child a{padding-right:0}
 .concepts-posts .flexcol{width:33.33%}
 .resources-section .rscol{width:25%}
 .concept-section-videos .vidcol{width:25%}
