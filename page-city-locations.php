@@ -53,13 +53,24 @@ $form_script = get_field('form_script');
 						</div>
 							<?php include(locate_template('inc/acf-map.php')); ?>
 					</section>
-				<?php endif ?>
+				<?php endif;
+				wp_reset_query();
+				?>
 
 				<section class="form">
 					<div class="wrap">
 						<?php echo $form_pre_text; ?>
 						<br>
-						<?php get_template_part('inc/salesforce'); ?>
+						<?php 
+						if( is_page('14907') ) {
+							get_template_part('inc/salesforce'); 
+						} elseif( is_page('14967') ) {
+							get_template_part('inc/salesforce-winston'); 
+						} elseif( is_page('14956') ) {
+							get_template_part('inc/salesforce-charleston'); 
+						}
+
+						?>
 						<?php echo $form_script; ?>
 					</div>
 				</section>
