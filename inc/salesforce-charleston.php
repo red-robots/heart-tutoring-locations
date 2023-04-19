@@ -111,7 +111,7 @@ $show_internet = get_field('show_internet');
 
           <li class="gfield">
             <label for="email" class="gfield_label"><strong>Region:</strong></label><br>
-              <select  id="00N2G00000C7uNN" name="00N2G00000C7uNN" title="Region">
+              <select required required="true" id="00N2G00000C7uNN" name="00N2G00000C7uNN" title="Region">
               <option value="">--None--</option>
               <option value="Charlotte">Charlotte</option>
               <option value="Charleston" selected="selected">Charleston</option>
