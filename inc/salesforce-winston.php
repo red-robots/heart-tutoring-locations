@@ -114,7 +114,7 @@ $show_internet = get_field('show_internet');
               <option value="">--None--</option>
               <option value="Charlotte">Charlotte</option>
               <option value="Charleston">Charleston</option>
-              <option value="Winston-Salem">Winston-Salem</option>
+              <option value="Winston-Salem"  selected="selected">Winston-Salem</option>
             </select>
           </li><br>
           
