@@ -487,15 +487,15 @@ $show_internet = get_field('show_internet');
 <?php if( $show_time_location == 'Yes') { ?>
   <script type="text/javascript">
       // Make required checkboxes for submit btn
-    $('#btnSubmit').click(function() {
-        checked = $(".school input[type=checkbox]:checked").length;
+    // $('#btnSubmit').click(function() {
+    //     checked = $(".school input[type=checkbox]:checked").length;
 
-        if(!checked) {
-          alert("You must check at least one prefered location.");
-          return false;
-        }
+    //     if(!checked) {
+    //       alert("You must check at least one prefered location.");
+    //       return false;
+    //     }
 
-      });
+    //   });
   </script>
 <?php } ?>
   </div>
