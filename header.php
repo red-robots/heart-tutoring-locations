@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/fonts/MyFontsWebfontsKit.css">
 <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOA-RHy6JvtZYx7etKtQL0-DU7tnrK36Y"></script>
-<!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6LdIzNEUAAAAAJPp55-3Bve0vGcrmK3KtN6uel8t"></script>
 <script>
 // grecaptcha.ready(function() {
