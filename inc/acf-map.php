@@ -1,5 +1,8 @@
 <div class="acf-map">
-	<?php  while ($wp_query->have_posts()) : $wp_query->the_post();?>
+	<?php  while ($wp_query->have_posts()) : $wp_query->the_post();
+
+		$location = get_field('google_map');
+		?>
 		<div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
 			<h4><?php the_title(); ?></h4>
 			<p class="address"><?php echo $location['address']; ?></p>

@@ -13,8 +13,9 @@ $city = get_field('location');
 $map_pre_text = get_field('map_pre_text');
 $form_pre_text = get_field('form_pre_text');
 $form_script = get_field('form_script');
+$location = get_field('google_map');
 // echo '<pre>';
-// print_r($city);
+// print_r($location);
 // echo '</pre>';
 ?>
 <?php include(locate_template('inc/city-headers.php')); ?>
