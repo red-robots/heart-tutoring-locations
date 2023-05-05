@@ -27,7 +27,7 @@ $i=0;
 		<div class="board-of-dir">
 			<h2>Board of Directors</h2>
 		</div>
-	<section class="team">
+	<section class="city-team">
 		<div class="inner">
 		<?php while ($wp_query->have_posts()) : $wp_query->the_post(); $i++;
 
