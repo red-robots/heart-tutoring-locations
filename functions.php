@@ -1,7 +1,7 @@
 <?php 
 // Enqueueing all the java script in a no conflict mode
 function bellaworks_scripts() {
-  wp_enqueue_style( 'bellaworks-style', get_template_directory_uri() . '/style.css', array(), '2.14' );
+  wp_enqueue_style( 'bellaworks-style', get_template_directory_uri() . '/style.css', array(), '2.15' );
   //wp_enqueue_style( 'bellaworks-style', get_stylesheet_uri()  );
 
   wp_deregister_script('jquery');
