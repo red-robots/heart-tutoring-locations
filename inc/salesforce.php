@@ -260,7 +260,13 @@ $show_internet = get_field('show_internet', 70);
               <div class="checkboxes schools">
 
 
-                  <?php if(have_rows('schools')) : while(have_rows('schools')) : the_row(); 
+                  <?php 
+                  // $get = get_field('schools', 70);
+                  // echo '<pre>';
+                  // print_r($get);
+                  // echo '</pre>';
+
+                  if(have_rows('schools', 70)) : while(have_rows('schools', 70)) : the_row(); 
                             
                         $sName = get_sub_field('name');
                         $fieldID = get_sub_field('id');
