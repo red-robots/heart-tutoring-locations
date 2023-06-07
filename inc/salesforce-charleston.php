@@ -36,6 +36,7 @@ $internet_desc = get_field('internet_desc');
 $how_did_you_hear_desc = get_field('how_did_you_hear_desc');
 $how_did_you_hear_hidden = get_field('how_did_you_hear_hidden');
 $how_did_you_hear_hidden_desc = get_field('how_did_you_hear_hidden_desc');
+$speak_spanish_desc = get_field('speak_spanish_desc');
 // show them or not.
 $show_first_name = get_field('show_first_name');
 $show_last_name = get_field('show_last_name');
@@ -56,6 +57,7 @@ $show_hear_other = get_field('show_hear_other');
 $show_dob = get_field('show_dob');
 $show_resi = get_field('show_resi');
 $show_internet = get_field('show_internet');
+$show_speak_spanish = get_field('show_speak_spanish');
 
 
  ?>
@@ -336,10 +338,12 @@ $show_internet = get_field('show_internet');
           <?php // honeypot ?>
 
 
+          <?php if( $show_speak_spanish == 'Yes') { ?>
           <li class="gfield">
-          <label class="gfield_label"><strong>Speaks Spanish:</strong></label>
+          <label class="gfield_label"><strong><?php echo $speak_spanish_desc; ?></strong></label>
             <input  id="00N2G00000C7uS8" name="00N2G00000C7uS8" type="checkbox" value="1" /><br>
           </li><br><br>
+         <?php } ?>
 
           
 

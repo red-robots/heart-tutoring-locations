@@ -36,6 +36,7 @@ $internet_desc = get_field('internet_desc', 70);
 $how_did_you_hear_desc = get_field('how_did_you_hear_desc', 70);
 $how_did_you_hear_hidden = get_field('how_did_you_hear_hidden', 70);
 $how_did_you_hear_hidden_desc = get_field('how_did_you_hear_hidden_desc', 70);
+$speak_spanish_desc = get_field('speak_spanish_desc', 70);
 // show them or not.
 $show_first_name = get_field('show_first_name', 70);
 $show_last_name = get_field('show_last_name', 70);
@@ -56,6 +57,7 @@ $show_hear_other = get_field('show_hear_other', 70);
 $show_dob = get_field('show_dob', 70);
 $show_resi = get_field('show_resi', 70);
 $show_internet = get_field('show_internet', 70);
+$show_speak_spanish = get_field('show_speak_spanish', 70);
 
 
  ?>
@@ -364,10 +366,12 @@ $show_internet = get_field('show_internet', 70);
           <br>
           <?php } ?>
 
+          <?php if( $show_speak_spanish == 'Yes') { ?>
           <li class="gfield">
-          <label class="gfield_label"><strong>Speaks Spanish:</strong></label>
+          <label class="gfield_label"><strong><?php echo $speak_spanish_desc; ?></strong></label>
             <input  id="00N2G00000C7uS8" name="00N2G00000C7uS8" type="checkbox" value="1" /><br>
           </li><br><br>
+         <?php } ?>
 
           <!-- 
 
