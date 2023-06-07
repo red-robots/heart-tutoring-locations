@@ -1604,7 +1604,7 @@ section.steps .step{width:30%}
 #header-content2-mobile{display:inherit;visibility:visible;height:auto;width:100%}
 #header-content2{display:none;visibility:hidden;height:0;width:0;position:absolute;left:0;top:0}
 #header-content2 img{display:none;visibility:hidden;height:0;width:0}
-#navigation{visibility:hidden;height:0;margin:0}
+#navigation{height:0;margin:0;display:none}
 #access{display:block;margin-left:auto;margin-right:auto;width:0;visibility:hidden}
 #access li{float:left;position:relative;text-align:center;padding-right:0;padding-left:0;padding-top:0;padding-bottom:0;visibility:hidden}
 #uniquename li{padding-bottom:0}

@@ -3725,9 +3725,10 @@ html[xmlns] .slides {
     }
     
     #navigation {
-        visibility: hidden;
+        // visibility: hidden;
         height: 0px;
         margin: 0px;
+        display: none;
     }
     #access {
         display: block;

@@ -364,6 +364,10 @@ $show_internet = get_field('show_internet', 70);
           <br>
           <?php } ?>
 
+          <li class="gfield">
+          <label class="gfield_label"><strong>Speaks Spanish:</strong></label>
+            <input  id="00N2G00000C7uS8" name="00N2G00000C7uS8" type="checkbox" value="1" /><br>
+          </li><br><br>
 
           <!-- 
 
