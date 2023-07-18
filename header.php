@@ -8,8 +8,12 @@
 <title><?php wp_title( '|', true, 'right' ); ?></title>
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo('template_url'); ?>/colorbox.css" />
-<link href='https://fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/fonts/MyFontsWebfontsKit.css">
 <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOA-RHy6JvtZYx7etKtQL0-DU7tnrK36Y"></script>

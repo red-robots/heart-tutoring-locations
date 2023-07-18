@@ -6048,3 +6048,107 @@ a.button {
         transform: scale(1.05);
     }
 }
+
+.repeater-blocks {
+	// border-top: 2px solid #00a5d1;
+	display: flex;
+	flex-wrap: wrap;
+    padding-top: 0;
+	.rb-row {
+		margin-bottom: 40px;
+	}
+	.rb-title {
+		font-family: "EurostileLTPro", sans-serif;
+		font-size: 28px;
+		line-height: 1.2;
+		color: #8961AF;
+		margin: 0 0 15px;
+		padding-bottom: 10px;
+		border-bottom: 2px solid #00a5d1;
+	}
+	.rb-columns {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -15px;
+		margin-right: -15px;
+		.rscol {
+			width: 25%;
+			text-align: center;
+			padding: 15px;
+			margin-bottom: 20px;
+			@media screen and (max-width: 960px) {
+				width: 33.333%;
+			}
+			@media screen and (max-width: 768px) {
+				width: 50%;
+			}
+			@media screen and (max-width: 468px) {
+				width: 100%;
+			}
+		}
+		.image {
+			border: none!important;
+		}
+		.iconBox {
+			display: block;
+			text-decoration: none;
+			.iconWrap {
+				margin: 0 0 15px;
+				padding: 15px;
+				min-height: 175px;
+				border: 1px solid #8a5eb1;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+				.inner {
+					width: 100%;
+					text-align: center;
+				}
+			}
+			span.icon {
+				display: block;
+				width: 90px;
+				height: 90px;
+				margin: 0 auto 8px;
+				background-size: contain;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.title {
+				font-family: 'Manrope', sans-serif;
+				font-size: 0.8em;
+				font-weight: 800;
+				letter-spacing: 0.07em;
+				line-height: 1.3;
+				text-transform: uppercase;
+			}
+	
+			.button {
+				display: block;
+				text-decoration: none;
+				border-radius: 5px;
+				padding: 7px 20px 6px;
+				color: #FFF;
+				font-size: 15px;
+				line-height: 1.2;
+				background: #8A5EB1;
+				text-align: center;
+			}
+		}
+		a.iconBox * {
+			transition: all .3s;
+		}
+		a.iconBox:hover {
+			.iconWrap {
+				border-color: #02A6D1;
+				.title {
+					color:#02A6D1;
+				}
+			}
+			.button {
+				background: #02A6D1;
+			}
+		}
+	}
+}
