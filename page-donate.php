@@ -50,14 +50,19 @@ to Heart.</a></div>
      <?php the_content(); ?>
      
 <?php //the_field("donate_form"); ?> 
-<script src="https://s3-us-west-2.amazonaws.com/bloomerang-public-cdn/hearttutoring/.widget-js/205824.js" type="text/javascript"></script>
+<!--<script src="https://s3-us-west-2.amazonaws.com/bloomerang-public-cdn/hearttutoring/.widget-js/205824.js" type="text/javascript"></script>-->
 <?php //get_template_part('inc/donate'); ?>
 
 <?php the_field("donate_bottom_content"); ?>     
 
 <?php endwhile; endif; ?> 
 
-   
+   <style type="text/css">
+				.btn-group .btn-submit-donation {
+					background: #00A5D1;
+					color: #fff;
+				}
+		</style>
      
  </div><!-- / page content -->
 
