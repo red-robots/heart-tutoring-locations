@@ -76,6 +76,9 @@ $the_content = get_the_content();
 						<div id="schools-feed">
 							<?php while ($wp_query->have_posts()) : $wp_query->the_post(); 
 								$format = get_field('format');
+								if( $format == 'inperson' ) {
+									$format = 'In-Person';
+								}
 								?>
 								<div class="schools-item">
 									<a href="<?php the_permalink() ?>">

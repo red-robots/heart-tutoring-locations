@@ -3,6 +3,9 @@
 
 		$location = get_field('google_map');
 		$format = get_field('format');
+		if( $format == 'inperson' ) {
+			$format = 'In-Person';
+		}
 		?>
 		<div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
 			<h4><?php the_title(); ?></h4>
