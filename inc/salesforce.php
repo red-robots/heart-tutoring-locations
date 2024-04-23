@@ -222,8 +222,8 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
               <?php } ?>
             <select  required required="true" id="00N2G00000ChccM" name="00N2G00000ChccM" title="Setting Preference" class="medium gfield_select">
               <option value="">Please Select</option>
-              <option value="inperson">In-person only</option>
-              <option value="virtual">Virtual only</option>
+              <option  value="In-person only">In-person only</option>
+              <option  value="Virtual only">Virtual only</option>
               
             </select  required="true" required>
           </li><br>
@@ -278,10 +278,16 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
                         $fieldID = get_sub_field('id');
                         $show = get_sub_field('show');
                         $format = get_sub_field('format');
+                        if( $format == "inperson") {
+                          $format = 'In-person';
+                        }
+                        if( $format == "virtual") {
+                          $format = 'Virtual';
+                        }
 
                         if( $show == 'Yes' ) {
                           echo '<div class="item school "><label>';
-                          echo '<input id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="'.$format.'">'.$sName;
+                          echo '<input data-format="'.$format.'" id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
                           echo '</label></div>';
                         }
 
@@ -497,22 +503,23 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
 
         
         document.getElementById('00N2G00000ChccM').addEventListener('change', function() {
-         // Get the selected option's value
-            var selectedType = this.value;
+         // Get the selected option's value and normalize it
+    var selectedType = this.value.split(' ')[0]; // Extracts "virtual" or "in-person" from the option value
+    console.log(selectedType);
 
-            // Hide all checkboxes initially
-            var checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
-            checkboxes.forEach(function(checkbox) {
-                checkbox.parentNode.style.display = 'none';  // Hide the parent label
-            });
+    // Hide all checkboxes initially
+    var checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.parentNode.style.display = 'none';  // Hide the parent label
+    });
 
-            // Display checkboxes that match the selected type
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.value === selectedType) {
-                    checkbox.parentNode.style.display = 'block';
-                }
-            });
-        });
+    // Display checkboxes that match the selected type
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.dataset.format === selectedType) {
+            checkbox.parentNode.style.display = 'block';
+        }
+    });
+});
 
 
 
