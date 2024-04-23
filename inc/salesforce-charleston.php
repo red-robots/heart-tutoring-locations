@@ -224,7 +224,7 @@ $show_speak_spanish = get_field('show_speak_spanish');
               <option value="">Please Select</option>
               <option value="In-person only">In-person only</option>
               <option value="Virtual only">Virtual only</option>
-              <option value="Willing to tutor either in-person or virtual">Willing to tutor either in-person or virtual</option>
+              
             </select  required="true" required>
           </li><br>
           <?php } ?>

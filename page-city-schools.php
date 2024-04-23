@@ -74,12 +74,15 @@ $the_content = get_the_content();
 					
 					if ($wp_query->have_posts()) : ?>
 						<div id="schools-feed">
-							<?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
+							<?php while ($wp_query->have_posts()) : $wp_query->the_post(); 
+								$format = get_field('format');
+								?>
 								<div class="schools-item">
 									<a href="<?php the_permalink() ?>">
 										<h2><?php the_title(); ?></h2>
 										<p>Principal: <?php the_field("principal"); ?></p>
 										<p>Beginning of Heart Partnership: <?php the_field("date_beginning_with_heart"); ?></p>
+										<?php if( $format ){ echo '<p style="text-transform: capitalize;">Format: '.$format.'</p>';} ?>
 										<p>Address:</p>
 										<br>
 										<?php 

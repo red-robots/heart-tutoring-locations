@@ -222,9 +222,9 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
               <?php } ?>
             <select  required required="true" id="00N2G00000ChccM" name="00N2G00000ChccM" title="Setting Preference" class="medium gfield_select">
               <option value="">Please Select</option>
-              <option value="In-person only">In-person only</option>
-              <option value="Virtual only">Virtual only</option>
-              <option value="Willing to tutor either in-person or virtual">Willing to tutor either in-person or virtual</option>
+              <option value="inperson">In-person only</option>
+              <option value="virtual">Virtual only</option>
+              
             </select  required="true" required>
           </li><br>
           <?php } ?>
@@ -259,8 +259,12 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
             <?php if($timeLocationDesc != '') { ?>
                 <label class="gfield_label"><?php echo $timeLocationDesc; ?></label><br>
               <?php } ?>
-              <div class="checkboxes schools">
-
+              <div class="checkboxes schools" id="checkboxes">
+                <style type="text/css">
+                  #checkboxes label {
+                      display: none;
+                  }
+                </style>
 
                   <?php 
                   // $get = get_field('schools', 70);
@@ -273,11 +277,12 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
                         $sName = get_sub_field('name');
                         $fieldID = get_sub_field('id');
                         $show = get_sub_field('show');
+                        $format = get_sub_field('format');
 
                         if( $show == 'Yes' ) {
-                          echo '<div class="item school">';
-                          echo '<input id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
-                          echo '</div>';
+                          echo '<div class="item school "><label>';
+                          echo '<input id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="'.$format.'">'.$sName;
+                          echo '</label></div>';
                         }
 
 
@@ -486,6 +491,27 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
                 $('#00N6A00000Mk09D').prop('required',false);
                 // $('#provinceselect').hide();
             }
+        });
+
+
+
+        
+        document.getElementById('00N2G00000ChccM').addEventListener('change', function() {
+         // Get the selected option's value
+            var selectedType = this.value;
+
+            // Hide all checkboxes initially
+            var checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.parentNode.style.display = 'none';  // Hide the parent label
+            });
+
+            // Display checkboxes that match the selected type
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.value === selectedType) {
+                    checkbox.parentNode.style.display = 'block';
+                }
+            });
         });
 
 
