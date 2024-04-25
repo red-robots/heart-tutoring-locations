@@ -264,6 +264,16 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
                   #checkboxes label {
                       display: none;
                   }
+                  .region {
+                    min-width: 200px;
+                    padding: 20px;
+                    margin-right: 10px;
+                  }
+                  .region h4 {
+                    margin-bottom: 15px;
+                    font-weight: bold;
+                    font-size: 22px;
+                  }
                 </style>
 
                   <?php 
@@ -272,28 +282,70 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
                   // print_r($get);
                   // echo '</pre>';
 
-                  if(have_rows('schools', 70)) : while(have_rows('schools', 70)) : the_row(); 
+                  // $get = get_field('regions', 70);
+                  //   echo '<pre>';
+                  //   print_r($get);
+                  //   echo '</pre>';
+
+                  if(have_rows('regions', 70)) : while(have_rows('regions', 70)) : the_row(); 
+
+                    
+
+                        $rTitle = get_sub_field('r_name');
+                        $r_schools = get_sub_field('r_schools');
+                        
+
+                         ?>
+                          <div class="region">
+                            <h4><?php echo $rTitle; ?></h4>
+                          <?php 
+                          foreach( $r_schools as $rs ) { 
+                            $sName = $rs['r_name'];
+                            $fieldID = $rs['r_id'];
+                            $show = $rs['r_show'];
+                            $format = $rs['r_format'];
+                            if( $format == "inperson") {
+                              $format = 'In-person';
+                            }
+                            if( $format == "virtual") {
+                              $format = 'Virtual';
+                            }
+                            if( $show == 'Yes' ) {
+                              echo '<div class="item school "><label>';
+                              echo '<input data-format="'.$format.'" id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
+                              echo '</label></div>';
+                            }
+                          } ?>
+                          </div>
+                        
+                        <?php
+
+                  endwhile; 
+                  endif;
+
+
+                  // if(have_rows('schools', 70)) : while(have_rows('schools', 70)) : the_row(); 
                             
-                        $sName = get_sub_field('name');
-                        $fieldID = get_sub_field('id');
-                        $show = get_sub_field('show');
-                        $format = get_sub_field('format');
-                        if( $format == "inperson") {
-                          $format = 'In-person';
-                        }
-                        if( $format == "virtual") {
-                          $format = 'Virtual';
-                        }
+                  //       $sName = get_sub_field('name');
+                  //       $fieldID = get_sub_field('id');
+                  //       $show = get_sub_field('show');
+                  //       $format = get_sub_field('format');
+                  //       if( $format == "inperson") {
+                  //         $format = 'In-person';
+                  //       }
+                  //       if( $format == "virtual") {
+                  //         $format = 'Virtual';
+                  //       }
 
-                        if( $show == 'Yes' ) {
-                          echo '<div class="item school "><label>';
-                          echo '<input data-format="'.$format.'" id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
-                          echo '</label></div>';
-                        }
+                  //       if( $show == 'Yes' ) {
+                  //         echo '<div class="item school "><label>';
+                  //         echo '<input data-format="'.$format.'" id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
+                  //         echo '</label></div>';
+                  //       }
 
 
-                      endwhile; 
-                      endif;
+                  //     endwhile; 
+                  //     endif;
                   ?>
 
             </div>
