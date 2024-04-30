@@ -265,7 +265,7 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
                       display: none;
                   }
                   .region {
-                    min-width: 200px;
+                    min-width: 40%;
                     padding: 20px;
                     margin-right: 10px;
                   }
