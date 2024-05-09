@@ -5084,6 +5084,7 @@ a.theme-btn2,
 		margin-left: -15px;
 		margin-right: -15px;
 		@include flexgroup();
+        justify-content: center;
 	}
 	.bcol {
 		width: 100%;

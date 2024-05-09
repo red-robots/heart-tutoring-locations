@@ -14,6 +14,7 @@ $board_of_directors = get_field('board_of_directors');
 $image = get_the_post_thumbnail_url($ID);
 $city = get_field('location', $pID );
 $cityTerm = $city->slug;
+$advisory_board = get_field('advisory_board');
 ?>
 
 <?php include(locate_template('inc/city-headers.php')); ?>
@@ -103,6 +104,11 @@ $cityTerm = $city->slug;
 						</section>
 					<?php endif; ?>
 					<?php include(locate_template('inc/bod.php')); ?>
+
+					<div class="advisory-board">
+						<?php echo $advisory_board; ?>
+					</div>
+
 				</div>
 				<?php include(locate_template('inc/locations-box.php')); ?>
 		   	</section>

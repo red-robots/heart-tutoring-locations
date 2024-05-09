@@ -32,7 +32,7 @@ $bcStyle = ($image) ? ' style="background-image:url('.$image['url'].')"' : '';
 
 <div id="footer2-wrapper">
 
-<div id="footer2-column1">Heart Math Tutoring | <a href='ma&#105;&#108;&#116;o&#58;volunt&#101;e%72%40h%6&#53;ar&#37;&#55;4tu&#116;o&#114;in&#103;%2E&#111;%7&#50;g'>&#118;olunt&#101;e&#114;&#64;&#104;&#101;a&#114;t&#116;&#117;t&#111;ring&#46;org</a>
+<div id="footer2-column1">Heart Math Tutoring | <a href='ma&#105;&#108;t&#111;&#58;&#118;&#37;6Flu%6Eteer%&#52;0%&#54;&#56;%65a&#114;&#116;m%6&#49;&#116;&#104;%74u&#116;&#37;6Fri%6E&#37;6&#55;&#46;o%72%6&#55;'>&#118;ol&#117;nteer&#64;hea&#114;tmat&#104;tutorin&#103;&#46;org</a>
 
 <div class="clear"></div>
 
