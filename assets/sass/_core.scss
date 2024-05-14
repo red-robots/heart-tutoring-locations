@@ -1191,13 +1191,24 @@ blockquote {
     color: #5b4175;
     text-decoration: none;
 }
+// #home-row1-content {
+//     max-width: $wrapwidth;
+//     width: 100%;
+//     height: 477px;
+//     margin-left: auto;
+//     margin-right: auto;
+//     position: relative;
+// }
 #home-row1-content {
     max-width: $wrapwidth;
     width: 100%;
     height: 477px;
     margin-left: auto;
     margin-right: auto;
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 #home-row1-box {
     max-width: 450px;
@@ -1211,6 +1222,16 @@ blockquote {
 #home-row1-box p {
     padding: 0px;
     margin: 0px;
+}
+#home-row1 {
+    position: relative;
+    width: 100%;
+    video {
+        width: 100%;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+    }
 }
 .flexslider ul li {
     max-width: 100%;
@@ -2892,6 +2913,10 @@ ol.pings h3 {
 .flexslider {
     margin: 0;
     padding: 0;
+    display: none;
+    @include tab {
+        display: block;
+    }
 }
 .flexslider .slides > li {
     display: none;
@@ -3808,12 +3833,21 @@ html[xmlns] .slides {
         width: 100%;
         height: auto;
     }
+    // #home-row1-content {
+    //     width: 100%;
+    //     height: 477px;
+    //     margin-left: auto;
+    //     margin-right: auto;
+    //     position: relative;
+    // }
     #home-row1-content {
         width: 100%;
         height: 477px;
         margin-left: auto;
         margin-right: auto;
-        position: relative;
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
     #home-row1-box {
         width: 90%;

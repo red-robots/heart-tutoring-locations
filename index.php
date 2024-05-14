@@ -5,6 +5,9 @@ get_header();
 ?>
 <div id="home-wrapper">
   <div id="home-row1">
+    <video class="desktop" autoPlay loop muted playsinline  poster="<?php echo $placeThumb['url']; ?>">
+                  <source src="<?php bloginfo('template_url');?>/images/Website-Homepage-Video.mp4" type="video/mp4">
+                </video>
     <div id="home-row1-content">
       <div id="home-row1-box">
         <div id="home-slider">
@@ -21,12 +24,13 @@ get_header();
           if ( $the_query->have_posts()) : ?>
             <div class="flexslider">
               <ul class="slides">
+                
                 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
                   <li> 
                     <?php
                       // check if the post has a Post Thumbnail assigned to it.
                       if ( has_post_thumbnail() ) {
-                        the_post_thumbnail();
+                        //the_post_thumbnail();
                       } 
                       the_content(); 
                       ?>
