@@ -6,7 +6,7 @@ get_header();
 <div id="home-wrapper">
   <div id="home-row1">
     <video class="desktop" autoPlay loop muted playsinline  poster="<?php echo $placeThumb['url']; ?>">
-                  <source src="<?php bloginfo('template_url');?>/images/Website-Homepage-Video.mp4" type="video/mp4">
+                  <source src="<?php bloginfo('template_url');?>/images/Website-Homepage-Video-2.mp4" type="video/mp4">
                 </video>
     <div id="home-row1-content">
       <div id="home-row1-box">
@@ -22,7 +22,7 @@ get_header();
 
           // The Loop
           if ( $the_query->have_posts()) : ?>
-            <div class="flexslider">
+            <!-- <div class="flexslider">
               <ul class="slides">
                 
                 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
@@ -36,8 +36,8 @@ get_header();
                       ?>
                   </li>
                 <?php endwhile; ?>
-              </ul><!-- slides -->
-            </div><!-- .flexslider -->
+              </ul>
+            </div> -->
           <?php 
             endif; // end loop 
             wp_reset_postdata(); 

@@ -1162,9 +1162,13 @@ blockquote {
 #home-row1 {
     width: 100%;
     float: left;
-    background-image: url("images/homerow1.jpg");
+    // background-image: url("images/homerow1.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    line-height: 0;
+}
+#home-row1-content {
+    line-height: 1;
 }
 #home-row1-links {
     // width: 565px;
