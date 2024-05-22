@@ -104,7 +104,7 @@ $(window).scroll(function() {
 	// if is not page "Donate" or "Become a "Volunteer"
     $showBtn = get_field('show_volunteer_button');
 
-	if ( $showBtn !== 'no' ) : ?>
+	if ( $showBtn !== 'no' && !is_front_page() )  : ?>
         <div id="volunteer-button">
             <a href="<?php bloginfo('url'); ?>/volunteers/become-a-volunteer/">Become A Volunteer!<br>
             <img src="<?php bloginfo('template_url'); ?>/images/blank.png" alt="" width="70" height="65" border="0">
