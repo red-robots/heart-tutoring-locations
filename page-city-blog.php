@@ -29,6 +29,7 @@ $cityTerm = $city->slug;
 						$args = array(
 							'post_type'=>'post',
 							'posts_per_page' => 3,
+							'paged' => $paged,
 							'tax_query' => array(
 								array(
 									'taxonomy' => 'location',
