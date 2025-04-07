@@ -93,7 +93,7 @@ get_header();
     <div id="home-row3-content">
       <div id="instagram-wrapper">
         <div id="instagram-feed">
-          <?php echo do_shortcode("[instagram-feed feed=3]"); ?>
+          <?php echo do_shortcode("[instagram-feed]"); ?>
         </div>
         <a href="https://instagram.com/heartmathtutoring/" target="_blank">HEART ON INSTAGRAM</a>
       </div>
