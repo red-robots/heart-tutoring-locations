@@ -202,7 +202,7 @@ $show_speak_spanish = get_field('show_speak_spanish', 70);
               <option value="Tuesday">Tuesday</option>
               <option value="Wednesday">Wednesday</option>
               <option value="Thursday">Thursday</option>
-              <!-- <option value="Friday">Friday</option> -->
+              <option value="Friday">Friday</option>
               <option value="No Preference">No Preference</option>
             </select  required="true" required>
           </li><br>
