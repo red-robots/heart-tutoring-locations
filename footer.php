@@ -113,11 +113,11 @@ $bcStyle = ($image) ? ' style="background-image:url('.$image['url'].')"' : '';
 
 
         <div class="mc-field-group">
-          <label for="mce-FNAME">First Name <span class="asterisk">*</span></label>
-          <input type="text" name="FNAME" class=" text email" id="mce-FNAME" value="" required>
+          <label for="mce-FNAME">First Name <!-- <span class="asterisk">*</span> --></label>
+          <input type="text" name="FNAME" class=" text email" id="mce-FNAME" value="" >
         </div>
-        <div class="mc-field-group"><label for="mce-LNAME">Last Name <span class="asterisk">*</span></label>
-          <input type="text" name="LNAME" class="email text" id="mce-LNAME" value="" required>
+        <div class="mc-field-group"><label for="mce-LNAME">Last Name <!-- <span class="asterisk">*</span> --></label>
+          <input type="text" name="LNAME" class="email text" id="mce-LNAME" value="" >
         </div>
 
 
