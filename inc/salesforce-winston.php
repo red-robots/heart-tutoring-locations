@@ -106,7 +106,7 @@ $show_speak_spanish = get_field('show_speak_spanish');
           <?php if( $show_phone == 'Yes') { ?>
           <li class="gfield">
             <label for="email" class="gfield_label"><strong><?php echo $phone; ?></strong></label><br>
-            <input  id="00N2G00000ChccW" maxlength="40" name="00N2G00000ChccW" class="medium" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" />
+            <input  id="00N2G00000ChccW" maxlength="40" name="00N2G00000ChccW" class="medium" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" required />
           </li><br>
           <?php } ?>
 

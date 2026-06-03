@@ -40,7 +40,7 @@ Alternate Email: (Optional)<br>
 <br><br>
 
 Phone number:<br>
-<input  id="00N2G00000ChccW" maxlength="40" name="00N2G00000ChccW" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" />
+<input  id="00N2G00000ChccW" maxlength="40" name="00N2G00000ChccW" onkeydown="formatPhoneOnEnter(this, event);" size="20" type="text" required />
 <br><br>
 
 Time Commitment:<br>
