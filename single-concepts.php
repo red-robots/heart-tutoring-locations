@@ -2,7 +2,7 @@
 /**
  * Displays a Single Post
  */
-
+$customThumb ='';
 get_header(); ?>
 
 <div id="primary" class="new-content-area single-content concepts">
@@ -30,7 +30,7 @@ get_header(); ?>
 			<?php } ?>
 			<div class="flexwrap">
 				<?php foreach ($video_galleries as $v) { 
-					$customThumb = $v['custom_video_thumb'];
+					$custom_video_thumb = $video['custom_video_thumb'] ?? '';
 					$video_title = $v['video_title'];
 					$video_description = $v['video_description'];
 					$video_url = $v['video_url'];

@@ -81,54 +81,55 @@ function shortenText($string, $limit, $break=".", $pad="...") {
 }
 
 
-function parse_external_url( $url = '', $internal_class = 'internal-link', $external_class = 'external-link') {
+function parse_external_url(
+  $url = '',
+  $internal_class = 'internal-link',
+  $external_class = 'external-link'
+) {
 
-    $url = trim($url);
+  // Handle ACF Link, File, or Image fields returned as arrays.
+  if ( is_array( $url ) ) {
+    $url = $url['url'] ?? '';
+  }
 
-    // Abort if parameter URL is empty
-    if( empty($url) ) {
-        return false;
+  // Ensure the value is a string before using trim().
+  if ( ! is_string( $url ) ) {
+    return false;
+  }
+
+  $url = trim( $url );
+
+  // Abort if the URL is empty.
+  if ( $url === '' ) {
+    return false;
+  }
+
+  $home_url = wp_parse_url( home_url() );
+
+  $target = '_self';
+  $class  = $internal_class;
+
+  if ( $url !== '#' ) {
+    $link_url = wp_parse_url( $url );
+
+    // Absolute URL with a host.
+    if ( ! empty( $link_url['host'] ) ) {
+      $home_host = $home_url['host'] ?? '';
+      $link_host = $link_url['host'];
+
+      // External link.
+      if ( strcasecmp( $link_host, $home_host ) !== 0 ) {
+        $target = '_blank';
+        $class  = $external_class;
+      }
     }
+  }
 
-    //$home_url = parse_url( $_SERVER['HTTP_HOST'] );     
-    $home_url = parse_url( home_url() );  // Works for WordPress
-    $target = '_self';
-    $class = $internal_class;
-    $baseName = ($url) ? basename($url) : '';
-
-    if( $url!='#' ) {
-        if (filter_var($url, FILTER_VALIDATE_URL)) {
-
-            $link_url = parse_url( $url );
-            
-            // Decide on target
-            if( empty($link_url['host']) ) {
-              // Is an internal link
-              $target = '_self';
-              $class = $internal_class;
-
-            } elseif( $link_url['host'] == $home_url['host'] ) {
-              // Is an internal link
-              $target = '_self';
-              $class = $internal_class;
-
-            } else {
-              // Is an external link
-              $target = '_blank';
-              $class = $external_class;
-            }
-
-        } 
-    }
-
-    // Return array
-    $output = array(
-        'class'     => $class,
-        'target'    => $target,
-        'url'       => $url
-    );
-
-    return $output;
+  return array(
+    'class'  => $class,
+    'target' => $target,
+    'url'    => $url,
+  );
 }
 
 

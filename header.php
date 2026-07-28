@@ -97,7 +97,7 @@ $(window).scroll(function() {
 </script>
 <!-- liquid web -->
 </head>
-<body <?php body_class($customClass); ?>>
+<body <?php body_class(); ?>>
 <!-- volunteer button -->
 <?php 
 
