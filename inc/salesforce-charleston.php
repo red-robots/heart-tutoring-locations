@@ -260,6 +260,22 @@ $show_speak_spanish = get_field('show_speak_spanish');
                 <label class="gfield_label"><?php echo $timeLocationDesc; ?></label><br>
               <?php } ?>
               <div class="checkboxes schools">
+                <style type="text/css">
+                  /*#checkboxes label {
+                      display: none;
+                  }*/
+                  .region {
+                    min-width: 40%;
+                    padding: 20px;
+                    margin-right: 10px;
+                    display: none;
+                  }
+                  .region h4 {
+                    margin-bottom: 15px;
+                    font-weight: bold;
+                    font-size: 22px;
+                  }
+                </style>
 
 
                   <?php if(have_rows('schools')) : while(have_rows('schools')) : the_row(); 
@@ -484,6 +500,27 @@ $show_speak_spanish = get_field('show_speak_spanish');
                 $('#00N6A00000Mk09D').prop('required',false);
                 // $('#provinceselect').hide();
             }
+        });
+
+        document.getElementById('00N2G00000ChccM').addEventListener('change', function() {
+             // Get the selected option's value and normalize it
+            var selectedType = this.value.split(' ')[0]; // Extracts "virtual" or "in-person" from the option value
+            console.log(selectedType);
+
+            // Hide all checkboxes initially
+            // var checkboxes = document.querySelectorAll('#checkboxes input[type="checkbox"]');
+            var checkboxes = document.querySelectorAll('.region');
+            checkboxes.forEach(function(checkbox) {
+                // checkbox.parentNode.style.display = 'none';  // Hide the parent label
+                checkbox.style.display = 'none';  // Hide the parent label
+            });
+
+            // Display checkboxes that match the selected type
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.dataset.format === selectedType) {
+                    // checkbox.parentNode.style.display = 'block';
+                    checkbox.style.display = 'block';
+                }
         });
 
 
