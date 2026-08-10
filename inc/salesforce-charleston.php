@@ -259,7 +259,7 @@ $show_speak_spanish = get_field('show_speak_spanish');
             <?php if($timeLocationDesc != '') { ?>
                 <label class="gfield_label"><?php echo $timeLocationDesc; ?></label><br>
               <?php } ?>
-              <div class="checkboxes schools">
+              <div class="checkboxes schools" id="checkboxes">
                 <style type="text/css">
                   /*#checkboxes label {
                       display: none;
@@ -277,22 +277,64 @@ $show_speak_spanish = get_field('show_speak_spanish');
                   }
                 </style>
 
+                  <?php
+                  if(have_rows('regions')) : while(have_rows('regions')) : the_row(); 
 
-                  <?php if(have_rows('schools')) : while(have_rows('schools')) : the_row(); 
-                            
-                        $sName = get_sub_field('name');
-                        $fieldID = get_sub_field('id');
-                        $show = get_sub_field('show');
+                    
 
-                        if( $show == 'Yes' ) {
-                          echo '<div class="item school">';
-                          echo '<input id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
-                          echo '</div>';
+                        $rTitle = get_sub_field('r_name');
+                        $r_schools = get_sub_field('r_schools');
+                        if( $rTitle == 'Virtual' ) {
+                          $format = 'Virtual';
+                        } else {
+                          $format = 'In-person';
                         }
+                        
+
+                         ?>
+                          <div id="region" class="region" data-format="<?php echo $format; ?>">
+                            <h4><?php echo $rTitle; ?></h4>
+                          <?php 
+                          foreach( $r_schools as $rs ) { 
+                            $sName = $rs['r_name'];
+                            $fieldID = $rs['r_id'];
+                            $show = $rs['r_show'];
+                            $format = $rs['r_format'];
+                            if( $format == "inperson") {
+                              $format = 'In-person';
+                            }
+                            if( $format == "virtual") {
+                              $format = 'Virtual';
+                            }
+                            if( $show == 'Yes' ) {
+                              echo '<div class="item school "><label>';
+                              echo '<input data-format="'.$format.'" id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
+                              echo '</label></div>';
+                            }
+                          } ?>
+                          </div>
+                        
+                        <?php
+
+                  endwhile; 
+                  endif;
+                  ?>
+                  <?php 
+                  //if(have_rows('schools')) : while(have_rows('schools')) : the_row(); 
+                            
+                  //       $sName = get_sub_field('name');
+                  //       $fieldID = get_sub_field('id');
+                  //       $show = get_sub_field('show');
+
+                  //       if( $show == 'Yes' ) {
+                  //         echo '<div class="item school">';
+                  //         echo '<input id="'.$fieldID.'" name="'.$fieldID.'" type="checkbox" value="1">'.$sName;
+                  //         echo '</div>';
+                  //       }
 
 
-                      endwhile; 
-                      endif;
+                  //     endwhile; 
+                  //     endif;
                   ?>
 
             </div>
@@ -522,6 +564,7 @@ $show_speak_spanish = get_field('show_speak_spanish');
                     checkbox.style.display = 'block';
                 }
         });
+            });
 
 
 
