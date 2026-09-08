@@ -579,16 +579,45 @@ $show_speak_spanish = get_field('show_speak_spanish');
 </script>
 <?php if( $show_time_location == 'Yes') { ?>
   <script type="text/javascript">
-      // Make required checkboxes for submit btn
-    // $('#btnSubmit').click(function() {
-    //     checked = $(".school input[type=checkbox]:checked").length;
+    // Require at least one school checkbox (only counts the region currently shown
+    // for the selected setting preference). Uses the browser's built-in validation
+    // bubble so it behaves like the other required fields.
+    (function() {
+        var schoolMessage = 'Please select at least one school.';
 
-    //     if(!checked) {
-    //       alert("You must check at least one prefered location.");
-    //       return false;
-    //     }
+        function visibleSchoolBoxes() {
+            return $('.region:visible .school input[type=checkbox]');
+        }
 
-    //   });
+        function validateSchools() {
+            var boxes = visibleSchoolBoxes();
+            var anyChecked = boxes.filter(':checked').length > 0;
+
+            $('.school input[type=checkbox]').each(function() {
+                this.setCustomValidity('');
+            });
+
+            if (boxes.length && !anyChecked) {
+                boxes[0].setCustomValidity(schoolMessage);
+            }
+
+            return anyChecked;
+        }
+
+        $('.school input[type=checkbox]').on('change', validateSchools);
+        $('#00N2G00000ChccM').on('change', validateSchools);
+        validateSchools();
+
+        // Fallback guard in case the browser skips constraint validation.
+        $('#btnSubmit').closest('form').on('submit', function(e) {
+            var boxes = visibleSchoolBoxes();
+            if (boxes.length && !validateSchools()) {
+                e.preventDefault();
+                boxes[0].reportValidity();
+                return false;
+            }
+        });
+    })();
   </script>
 <?php } ?>
   </div>
