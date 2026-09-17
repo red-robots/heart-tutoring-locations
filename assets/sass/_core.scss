@@ -6087,6 +6087,20 @@ a.button {
         transform: scale(1.05);
     }
 }
+// matches the purple header cta buttons — for use in page content
+a.button-purple {
+    background-color: $purple;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    transition: all ease .2s;
+    &:hover {
+        background-color: $teal;
+        color: #fff;
+    }
+}
 
 .repeater-blocks {
 	// border-top: 2px solid #00a5d1;
