@@ -69,30 +69,9 @@ get_header(); ?>
 
     <?php the_content(); ?>
 
-      <a name="faqs"></a>
-      <!-- -->
-      <p>&nbsp;</p>
-      <h2 class="faqTitle"><?php the_field("accordion_header"); ?></h2>
+      <?php include(locate_template('inc/faq-accordion.php')); ?>
 
-      <div id="custom-accordion">
-      <?php if(get_field('accordion')): while(has_sub_field('accordion')): ?>
-       <div class="faqrow">
-          <div class="question">
-            <h2><?php the_sub_field("accordion_header"); ?></h2>
-            <span class="view"><span class="icon"></span></span>
-          </div>
-          <div class="answer">
-            <?php the_sub_field("accordion_panel"); ?>
-          </div>
-        </div>
-      <div><!-- accordion -->
-
-      
-    </div><!-- page content -->
-  <?php endwhile; endif; ?>
-  </div><!--  main -->
-
-    <div style="float: left;" id="volunteer-school-list">  
+    <div style="float: left;" id="volunteer-school-list">
       <a name="locations"></a>
       <p>&nbsp;</p> 
       <?php the_field("bottom_content"); ?>
@@ -117,7 +96,7 @@ get_header(); ?>
       <?php the_field('after_form'); ?>
     </div>    
   <?php endwhile; wp_reset_postdata(); // end of the loop. ?>
-</div><!-- / main wrapper -->
+</div><!-- / page content (#main + #main-wrapper close in footer.php, same as page.php) -->
 
 
 <script>
