@@ -4491,7 +4491,7 @@ h2.faqTitle { font-size: 21px; margin-bottom: 20px; }
 
 #custom-accordion .faqrow .question span.view { position: absolute; top: 0; right: 0; z-index: 10; color: #00A5D1; }
 
-#custom-accordion .faqrow .question span.view:after { content: 'view answer'; display: inline-block; font-family: EurostileLTPro; font-size: 15px; position: relative; }
+#custom-accordion .faqrow .question span.view:after { content: 'view'; display: inline-block; font-family: EurostileLTPro; font-size: 15px; position: relative; }
 
 #custom-accordion .faqrow .question span.view .icon { display: inline-block; position: absolute; top: 0; left: -15px; }
 
