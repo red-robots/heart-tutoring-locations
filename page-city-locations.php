@@ -63,7 +63,10 @@ $location = get_field('google_map');
 						<?php echo $form_pre_text; ?>
 						<br>
 						<?php 
-						if( is_page('14907') ) {
+						$vsx = bellaworks_vsx_current();
+						if( $vsx ) {
+							get_template_part( $vsx['partial'] );
+						} elseif( is_page('14907') ) {
 							get_template_part('inc/salesforce'); 
 						} elseif( is_page('14967') ) {
 							get_template_part('inc/salesforce-winston'); 

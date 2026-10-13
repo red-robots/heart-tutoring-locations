@@ -1,0 +1,769 @@
+/**
+ * Volunteer sign-up experience (see inc/volunteer-signup.php).
+ *
+ * Standalone on purpose: it only loads on pages running the stepped form, and
+ * everything is scoped to .vsx so the theme stylesheet is untouched.
+ * Without JavaScript the steps stack into one long form; .vsx--js is added by
+ * the script and switches on the one-step-at-a-time layout.
+ */
+
+.vsx {
+	--vsx-purple: #8961af;
+	--vsx-purple-dark: #6f4a94;
+	--vsx-purple-tint: #f5f0fa;
+	--vsx-teal: #00a5d1;
+	--vsx-ink: #2b3440;
+	--vsx-muted: #5d6875;
+	--vsx-line: #d9dfe6;
+	--vsx-surface: #fff;
+	--vsx-wash: #f6f9fb;
+	--vsx-error: #c0392b;
+	--vsx-radius: 12px;
+
+	box-sizing: border-box;
+	width: 100%;
+	margin: 10px 0 60px;
+	padding: 28px 20px 24px;
+	background: var(--vsx-surface);
+	border: 1px solid var(--vsx-line);
+	border-radius: 18px;
+	box-shadow: 0 10px 30px rgba(43, 52, 64, 0.08);
+	color: var(--vsx-ink);
+	font-size: 17px;
+	line-height: 1.5;
+	text-align: left;
+	scroll-margin-top: 24px;
+}
+
+.vsx *,
+.vsx *::before,
+.vsx *::after {
+	box-sizing: border-box;
+}
+
+.vsx [hidden] {
+	display: none !important;
+}
+
+@media (min-width: 700px) {
+	.vsx {
+		padding: 36px 44px 32px;
+	}
+}
+
+/* ---------- progress ---------- */
+
+.vsx-progress {
+	margin: 0 0 30px;
+}
+
+.vsx-progress-list {
+	display: none;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vsx-progress-list li {
+	position: relative;
+	flex: 1 1 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	background: none;
+}
+
+/* The line joining one step to the next. */
+.vsx-progress-list li + li::before {
+	content: "";
+	position: absolute;
+	top: 18px;
+	right: 50%;
+	width: 100%;
+	height: 3px;
+	background: var(--vsx-line);
+}
+
+.vsx-progress-list li:has([data-state="done"]) + li::before,
+.vsx-progress-list li:has([data-state="done"])::before,
+.vsx-progress-list li:has([data-state="current"])::before {
+	background: var(--vsx-teal);
+}
+
+.vsx-progress-step {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--vsx-ink);
+	/* Carrois Gothic has no bold; Manrope is already loaded by the theme. */
+	font-family: Manrope, sans-serif;
+	font-size: 17px;
+	font-weight: 800;
+	line-height: 1.2;
+	text-align: center;
+	cursor: pointer;
+}
+
+.vsx-progress-step:disabled,
+.vsx-progress-step[data-state="current"] {
+	cursor: default;
+}
+
+.vsx-progress-dot {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	border: 3px solid var(--vsx-teal);
+	border-radius: 50%;
+	background: var(--vsx-teal);
+	color: #fff;
+	font-weight: 700;
+	font-size: 16px;
+	transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.vsx-progress-step[data-state="current"] {
+	color: var(--vsx-teal);
+}
+
+.vsx-progress-step[data-state="current"] .vsx-progress-dot {
+	background: var(--vsx-surface);
+	color: var(--vsx-teal);
+	box-shadow: 0 0 0 5px rgba(0, 165, 209, 0.15);
+}
+
+.vsx-progress-step[data-state="done"] .vsx-progress-dot span {
+	display: none;
+}
+
+.vsx-progress-step[data-state="done"] .vsx-progress-dot::after {
+	content: "";
+	width: 12px;
+	height: 7px;
+	margin-top: -2px;
+	border-left: 3px solid #fff;
+	border-bottom: 3px solid #fff;
+	transform: rotate(-45deg);
+}
+
+.vsx-progress-step:focus-visible {
+	outline: none;
+}
+
+.vsx-progress-step:focus-visible .vsx-progress-dot {
+	outline: 3px solid var(--vsx-purple);
+	outline-offset: 2px;
+}
+
+.vsx-progress-mobile {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 12px;
+	margin-bottom: 10px;
+	font-size: 15px;
+}
+
+.vsx-progress-count {
+	color: var(--vsx-muted);
+}
+
+.vsx-progress-name {
+	font-weight: 700;
+	color: var(--vsx-ink);
+}
+
+.vsx-progress-bar {
+	height: 6px;
+	border-radius: 3px;
+	background: var(--vsx-line);
+	overflow: hidden;
+}
+
+.vsx-progress-bar span {
+	display: block;
+	height: 100%;
+	width: 0;
+	border-radius: 3px;
+	background: var(--vsx-teal);
+	transition: width 0.3s ease;
+}
+
+@media (min-width: 700px) {
+	.vsx-progress-list {
+		display: flex;
+	}
+
+	.vsx-progress-mobile,
+	.vsx-progress-bar {
+		display: none;
+	}
+}
+
+/* ---------- steps ---------- */
+
+.vsx-form {
+	margin: 0;
+}
+
+.vsx-step {
+	min-width: 0;
+	margin: 0 0 36px;
+	padding: 0;
+	border: 0;
+}
+
+.vsx--js .vsx-step {
+	margin-bottom: 0;
+	animation: vsx-in 0.25s ease both;
+}
+
+@keyframes vsx-in {
+	from { opacity: 0; transform: translateY(8px); }
+	to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.vsx--js .vsx-step {
+		animation: none;
+	}
+
+	.vsx * {
+		transition: none !important;
+	}
+}
+
+.vsx .vsx-step-title {
+	display: block;
+	width: 100%;
+	margin: 0 0 8px;
+	padding: 0;
+	color: var(--vsx-teal);
+	font-family: EurostileLTPro, sans-serif;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 1.2;
+	outline: none;
+}
+
+.vsx .vsx-step-lede {
+	margin: 0 0 4px;
+	color: var(--vsx-muted);
+}
+
+.vsx:not(.vsx--js) .vsx-js-only {
+	display: none;
+}
+
+/* ---------- fields ---------- */
+
+.vsx-grid {
+	display: grid;
+	gap: 0 20px;
+}
+
+@media (min-width: 600px) {
+	.vsx-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.vsx-field {
+	margin: 24px 0 0;
+}
+
+.vsx .vsx-label {
+	display: block;
+	margin: 0 0 6px;
+	color: var(--vsx-ink);
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 1.35;
+}
+
+.vsx-optional {
+	margin-left: 6px;
+	color: var(--vsx-muted);
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.vsx .vsx-hint {
+	margin: 0 0 10px;
+	color: var(--vsx-muted);
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.vsx .vsx-hint a {
+	color: var(--vsx-purple);
+	text-decoration: underline;
+	word-break: break-word;
+}
+
+.vsx .vsx-input {
+	display: block;
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding: 12px 14px;
+	border: 2px solid var(--vsx-line);
+	border-radius: var(--vsx-radius);
+	background: var(--vsx-surface);
+	color: var(--vsx-ink);
+	font: inherit;
+	font-size: 17px;
+	line-height: 1.4;
+	box-shadow: none;
+	transition: border-color 0.15s, box-shadow 0.15s;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.vsx .vsx-input--short {
+	max-width: 220px;
+}
+
+.vsx textarea.vsx-input {
+	min-height: 96px;
+	resize: vertical;
+}
+
+.vsx .vsx-input:focus {
+	outline: none;
+	border-color: var(--vsx-purple);
+	box-shadow: 0 0 0 4px rgba(137, 97, 175, 0.18);
+}
+
+.vsx .vsx-field--error .vsx-input {
+	border-color: var(--vsx-error);
+}
+
+.vsx .vsx-error {
+	margin: 8px 0 0;
+	color: var(--vsx-error);
+	font-size: 15px;
+	font-weight: 700;
+}
+
+/* ---------- choices: cards and chips ---------- */
+
+.vsx-choices {
+	display: grid;
+	gap: 12px;
+}
+
+.vsx-choices--cards {
+	grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.vsx-choices--chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.vsx .vsx-choice {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.vsx .vsx-choice input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.vsx-choice-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 2px;
+	height: 100%;
+	min-height: 48px;
+	padding: 14px 16px 14px 46px;
+	border: 2px solid var(--vsx-line);
+	border-radius: var(--vsx-radius);
+	background: var(--vsx-surface);
+	color: var(--vsx-ink);
+	transition: border-color 0.15s, background-color 0.15s, box-shadow 0.15s;
+}
+
+/* The radio / check mark drawn on the left of each card. */
+.vsx-choice-body::before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 16px;
+	width: 20px;
+	height: 20px;
+	margin-top: -10px;
+	border: 2px solid #aeb7c2;
+	border-radius: 50%;
+	background: var(--vsx-surface);
+	transition: border-color 0.15s, background-color 0.15s;
+}
+
+.vsx-choice input[type="checkbox"] + .vsx-choice-body::before {
+	border-radius: 6px;
+}
+
+.vsx-choice-body::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 22px;
+	width: 9px;
+	height: 5px;
+	margin-top: -4px;
+	border-left: 2px solid #fff;
+	border-bottom: 2px solid #fff;
+	transform: rotate(-45deg);
+	opacity: 0;
+}
+
+.vsx-choice-label {
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.vsx-choice-note {
+	color: var(--vsx-muted);
+	font-size: 14px;
+	line-height: 1.35;
+}
+
+.vsx-choice:hover .vsx-choice-body {
+	border-color: var(--vsx-purple);
+}
+
+.vsx-choice input:checked + .vsx-choice-body {
+	border-color: var(--vsx-purple);
+	background: var(--vsx-purple-tint);
+}
+
+.vsx-choice input:checked + .vsx-choice-body::before {
+	border-color: var(--vsx-purple);
+	background: var(--vsx-purple);
+}
+
+.vsx-choice input:checked + .vsx-choice-body::after {
+	opacity: 1;
+}
+
+.vsx-choice input:focus-visible + .vsx-choice-body {
+	box-shadow: 0 0 0 4px rgba(137, 97, 175, 0.25);
+}
+
+.vsx-choices--chips .vsx-choice-body {
+	min-height: 44px;
+	padding: 9px 16px 9px 42px;
+	border-radius: 22px;
+}
+
+.vsx-choices--chips .vsx-choice-body::before {
+	left: 13px;
+}
+
+.vsx-choices--chips .vsx-choice-body::after {
+	left: 19px;
+}
+
+.vsx-choices--chips .vsx-choice-label {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+/* A single confirm-style checkbox. */
+.vsx .vsx-check {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin: 0;
+	padding: 14px 16px;
+	border: 2px solid var(--vsx-line);
+	border-radius: var(--vsx-radius);
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.vsx .vsx-check input {
+	flex: 0 0 auto;
+	width: 20px;
+	height: 20px;
+	margin: 2px 0 0;
+	accent-color: var(--vsx-purple);
+}
+
+.vsx .vsx-check:has(input:checked) {
+	border-color: var(--vsx-purple);
+	background: var(--vsx-purple-tint);
+}
+
+/* ---------- schools ---------- */
+
+.vsx-empty {
+	margin: 0;
+	padding: 18px;
+	border: 2px dashed var(--vsx-line);
+	border-radius: var(--vsx-radius);
+	color: var(--vsx-muted);
+	text-align: center;
+}
+
+.vsx-regions {
+	display: grid;
+	gap: 16px;
+}
+
+.vsx-region {
+	padding: 18px 18px 6px;
+	border-radius: var(--vsx-radius);
+	background: var(--vsx-wash);
+}
+
+.vsx .vsx-region-title {
+	margin: 0 0 12px;
+	padding: 0;
+	color: var(--vsx-teal);
+	font-family: EurostileLTPro, sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 0.08em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.vsx-school {
+	margin: 0 0 14px;
+}
+
+.vsx-school-name {
+	margin: 0 0 8px;
+	font-weight: 700;
+}
+
+/* ---------- review ---------- */
+
+.vsx-review {
+	display: grid;
+	gap: 14px;
+	margin: 20px 0 0;
+}
+
+.vsx-review-section {
+	padding: 16px 18px;
+	border-radius: var(--vsx-radius);
+	background: var(--vsx-wash);
+}
+
+.vsx-review-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 0 0 10px;
+}
+
+.vsx .vsx-review-head h4 {
+	margin: 0;
+	padding: 0;
+	color: var(--vsx-teal);
+	font-family: EurostileLTPro, sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	letter-spacing: 0.08em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.vsx .vsx-review-edit {
+	margin: 0;
+	padding: 4px 6px;
+	border: 0;
+	background: none;
+	color: var(--vsx-purple);
+	font: inherit;
+	font-size: 15px;
+	font-weight: 700;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.vsx-review dl {
+	display: grid;
+	gap: 4px 20px;
+	margin: 0;
+}
+
+.vsx-review dt {
+	margin: 6px 0 0;
+	color: var(--vsx-muted);
+	font-size: 15px;
+	font-weight: 400;
+}
+
+.vsx-review dd {
+	margin: 0;
+	font-weight: 700;
+	overflow-wrap: anywhere;
+}
+
+.vsx .vsx-review dd ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.vsx .vsx-review dd li {
+	margin: 0 0 2px;
+	padding: 0;
+	list-style: none;
+	background: none;
+}
+
+@media (min-width: 600px) {
+	.vsx-review dl {
+		grid-template-columns: 200px 1fr;
+	}
+
+	.vsx-review dt {
+		margin: 0;
+	}
+}
+
+.vsx-captcha {
+	margin: 24px 0 0;
+}
+
+/* ---------- navigation ---------- */
+
+.vsx-nav {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 16px;
+	margin: 32px 0 0;
+	padding: 22px 0 0;
+	border-top: 1px solid var(--vsx-line);
+}
+
+.vsx .vsx-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 50px;
+	margin: 0;
+	padding: 12px 28px;
+	border: 0;
+	border-radius: 25px;
+	background: var(--vsx-purple);
+	color: #fff;
+	font: inherit;
+	font-size: 17px;
+	font-weight: 700;
+	line-height: 1.2;
+	text-transform: none;
+	cursor: pointer;
+	transition: background-color 0.15s, transform 0.15s;
+}
+
+.vsx .vsx-btn:hover {
+	background: var(--vsx-purple-dark);
+}
+
+.vsx .vsx-btn:active {
+	transform: translateY(1px);
+}
+
+.vsx .vsx-btn:focus-visible,
+.vsx .vsx-back:focus-visible,
+.vsx .vsx-review-edit:focus-visible {
+	outline: 3px solid var(--vsx-teal);
+	outline-offset: 2px;
+}
+
+.vsx .vsx-btn:disabled {
+	background: #c5cbd3;
+	cursor: not-allowed;
+}
+
+.vsx .vsx-back {
+	margin: 0 auto 0 0;
+	padding: 10px 6px;
+	border: 0;
+	background: none;
+	color: var(--vsx-muted);
+	font: inherit;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.vsx .vsx-back:hover {
+	color: var(--vsx-ink);
+}
+
+@media (max-width: 480px) {
+	.vsx .vsx-btn {
+		flex: 1 1 auto;
+	}
+}
+
+/* ---------- odds and ends ---------- */
+
+.vsx-pot {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+}
+
+.vsx-dry {
+	margin: 28px 0 0;
+	padding: 20px;
+	border: 2px dashed var(--vsx-teal);
+	border-radius: var(--vsx-radius);
+}
+
+.vsx .vsx-dry-table {
+	width: 100%;
+	margin: 12px 0 0;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.vsx .vsx-dry-table th,
+.vsx .vsx-dry-table td {
+	padding: 6px 10px 6px 0;
+	border-bottom: 1px solid var(--vsx-line);
+	text-align: left;
+	vertical-align: top;
+	overflow-wrap: anywhere;
+}
+
+.vsx .vsx-dry-table th {
+	width: 38%;
+	font-family: Monaco, Consolas, monospace;
+	font-weight: 400;
+}

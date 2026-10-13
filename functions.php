@@ -36,6 +36,7 @@ add_action( 'wp_enqueue_scripts', 'bellaworks_scripts' );
 define('THEMEURI',get_template_directory_uri() . '/');
 
 require get_template_directory() . '/inc/post-types.php';
+require get_template_directory() . '/inc/volunteer-signup.php';
 
 function bellaworks_body_classes( $classes ) {
     global $post;
