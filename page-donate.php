@@ -28,10 +28,9 @@ $image = get_field('page_top_photo');
 <div id="top-content-links">
 <div class="top-content-linkbox2"><a href="<?php bloginfo('url'); ?>/donate/#donate"><h2>Make an online
 donation!</h2>Secure, tax-deductible donations.</a></div>
-<div class="top-content-linkbox2"><a href="<?php bloginfo('url'); ?>/donate/#check"><h2>Donate by<br>
-check!</h2>Mail your contribution<br>
-to Heart.</a></div>
-<div class="top-content-linkbox2"><a href="ma&#105;lto&#58;%&#54;7%&#54;C&#37;&#54;5nda&#46;m&#97;&#117;c&#107;&#37;40&#104;%6&#53;&#37;61rtm&#97;t&#104;tu&#116;%6Fring%&#50;Eo%72g"><h2>Become a community partner!</h2></a></div>
+<div class="top-content-linkbox2"><a href="<?php bloginfo('url'); ?>/ways-to-give/"><h2>Other ways<br>
+to give!</h2>Explore gifts of stock, DAFs, and more.</a></div>
+<div class="top-content-linkbox2"><a href="ma&#105;lto&#58;%&#54;7%&#54;C&#37;&#54;5nda&#46;m&#97;&#117;c&#107;&#37;40&#104;%6&#53;&#37;61rtm&#97;t&#104;tu&#116;%6Fring%&#50;Eo%72g"><h2>Questions?</h2>Contact our team!</a></div>
 </div>
 
 
